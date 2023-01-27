@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% block title%} {{boyband.group_name}}{%endblock%}
+{% block content %}
+<div class="detail__img">
+    <img src="{{boyband.img}}" alt="{{boyband.name}}" />
+</div>
+<div class="detail__name">
+    {% if boyband.verified_artist %}
+    <div class="icon-text">
+        <span class="icon has-text-info">
+            <i class="fas fa-check-circle"></i>
+        </span>
+        <span>Verified</span>
+    </div>
+    {% endif %}
+    <h1 class="title">{{boyband.group_name}}</h1>
+</div>
+<div class="detail__container">
+    <div class="buttons">
+        <a href="{% url 'boyband_update' boyband.pk %}" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+        <a href="{% url 'boyband_delete' boyband.pk%}" class="button is-danger">
+            <span class="icon">
+                <i class="fas fa-trash-alt"></i>
+            </span>
+        </a>
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">About</h4>
+        <p>Members: {{boyband.member}}</p>
+        <p>Bio: {{boyband.bio}}</p>
+    </div>
+</div>
+
+{% endblock %}
